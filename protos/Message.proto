@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "User.proto";
+
+message Message {
+  int32 id = 1;
+  User user = 2;
+  string text = 3;
+  google.protobuf.Timestamp createdAt = 4;
+}

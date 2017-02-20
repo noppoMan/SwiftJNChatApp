@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SwiftJNChatService</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-social.css">
+  </head>
+
+  <body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jwt-decode.min.js"></script>
+    <script>
+      function unixtime(date) {
+        return Math.floor(date.getTime() / 1000);
+      }
+
+      $(document).ready(function(){
+        if(localStorage.jwt) {
+          var decoded = jwt_decode(localStorage.jwt);
+          window.currentUser = JSON.parse(localStorage.currentUser);
+          var expires = new Date(decoded.expires);
+          var now = new Date();
+          // check jwt lifetime.
+          if(unixtime(now) > unixtime(expires)) {
+            localStorage.removeItem("jwt");
+            location.reload();
+          }
+
+          var compiled = _.template($("#chat").html());
+          var html = compiled();
+          $("#app-root").append(html);
+
+        } else {
+          var compiled = _.template($("#signin").html());
+          var html = compiled();
+          $("#app-root").append(html);
+        }
+      });
+    </script>
+    <div id="app-root"></div>
+
+    <script type="text/template" id="chat">
+      <div class="chat_window">
+        <div class="top_menu">
+            <div class="buttons">
+                <div class="button close"></div>
+                <div class="button minimize"></div>
+                <div class="button maximize"></div>
+            </div>
+            <div class="title">Chat</div>
+        </div>
+        <ul class="messages"></ul>
+        <div class="bottom_wrapper clearfix">
+            <div class="message_input_wrapper">
+                <input class="message_input" placeholder="Type your message here..." />
+            </div>
+            <div class="send_message">
+                <div class="icon"></div>
+                <div class="text">Send</div>
+            </div>
+        </div>
+      </div>
+      <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+      <script type="text/javascript" src="/javascripts/chat.js"></script>
+    </script>
+
+    <script type="text/template" id="message_template">
+      <li class="message left" id="<%= id %>">
+          <div class="avatar"><img src="<%= user.avaterURL %>"></div>
+          <div class="text_wrapper">
+              <div class="text"><%= text %></div>
+          </div>
+      </li>
+    </script>
+
+    <script type="text/template" id="signin">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/signin.css">
+      <div class="container">
+         <form class="form-signin">
+           <h2 class="form-signin-heading">Please sign in</h2>
+           <a class="btn btn-block btn-social btn-github" href="/auth/github">
+             <span class="fa fa-github"></span> Sign in with GitHub
+           </a>
+         </form>
+       </div>
+    </script>
+
+  </body>
+</html>

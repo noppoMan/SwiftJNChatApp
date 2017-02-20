@@ -1,0 +1,1 @@
+protoc --proto_path=protos --plugin=protoc-gen-swift=./.build/debug/protoc-gen-swift --swift_out=./Sources/SwiftJNChatApp/PBGenerated protos/*.proto

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SwiftJNChatService</title>
+    <script>
+      var jwt = "{{TOKEN}}";
+      var currentUser = '{{currentUser}}';
+      localStorage.jwt = jwt;
+      localStorage.currentUser = currentUser;
+      location.href = "/?login=success";
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

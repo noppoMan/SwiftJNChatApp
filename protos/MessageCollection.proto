@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "Message.proto";
+
+message MessageCollection {
+  repeated Message items = 1;
+}
