@@ -23,6 +23,19 @@ $ open *.xcodeproj
 
 <img src="https://cloud.githubusercontent.com/assets/1511276/23135620/ac93993c-f7dc-11e6-9679-ee48dce11616.png" width="600">
 
+### 3. Add .env into Project Root
+
+First, You need to create github Oauth Application and get `CLIENT_ID` AND `CLIENT_SECRET` from Your Application page.
+
+<img src="https://cloud.githubusercontent.com/assets/1511276/23151633/d87272a4-f83f-11e6-87f7-dcce0bae83ad.png" width="600">
+
+```
+$ touch .env
+echo "GITHUB_CLIENT_ID=YOUR_CLIENT_ID" > .env
+echo "GITHUB_CLIENT_SECRET=YOUR_SECRET" > .env
+echo "JWT_SECRET=foobar" > .env
+```
+
 ### 3. Schema Migration
 ```shell
 $ swift build
