@@ -5,6 +5,8 @@ import WebAppKit
 import SwiftProtobuf
 import Foundation
 
+let env = DotEnv(withFile: ".env")
+
 let __dirname = #file.characters
     .split(separator: "/", omittingEmptySubsequences: false)
     .dropLast(1)
