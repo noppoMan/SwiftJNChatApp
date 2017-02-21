@@ -13,7 +13,7 @@ class Migration_20170218035306_CreateUser: Migratable {
                 Schema.integer("id").asPrimaryKey().asAutoIncrement(),
                 Schema.string("login").asUnique().asNotNullable(),
                 Schema.string("name"),
-                Schema.string("avater_url")
+                Schema.string("avatar_url")
             ])
             .hasTimestamps()
 

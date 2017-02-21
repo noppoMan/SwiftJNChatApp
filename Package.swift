@@ -11,7 +11,6 @@ let package = Package(
         .Package(url: "https://github.com/noppoMan/WebAppKit.git", majorVersion: 0, minor: 1),
         .Package(url: "https://github.com/noppoMan/SwiftKnex.git", majorVersion: 0, minor: 2),
         .Package(url: "https://github.com/apple/swift-protobuf.git", Version(0,9,24)),
-        .Package(url: "https://github.com/ishkawa/APIKit.git", Version(3,1,2)),
         .Package(url: "https://github.com/noppoMan/JSONWebToken.swift.git", Version(2,1,1))
     ]
 )

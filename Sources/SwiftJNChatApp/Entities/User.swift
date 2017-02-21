@@ -25,8 +25,8 @@ extension User: Entity, Serializable {
             throw ValidationError.required("users.name")
         }
         
-        guard let avaterURL = row["avater_url"] as? String else {
-            throw ValidationError.required("users.avater_url")
+        guard let avaterURL = row["avatar_url"] as? String else {
+            throw ValidationError.required("users.avatar_url")
         }
         
         
@@ -43,7 +43,7 @@ extension User: Entity, Serializable {
         return [
             "login": login,
             "name": name,
-            "avater_url": avaterURL,
+            "avatar_url": avaterURL,
             "created_at": now,
             "updated_at": now
         ]

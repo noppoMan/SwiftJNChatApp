@@ -24,7 +24,7 @@ func messageRouter() -> Router {
                 col("users.id").as("u_id"),
                 col("users.name").as("u_name"),
                 col("users.login").as("u_login"),
-                col("users.avater_url").as("u_avater_url")
+                col("users.avatar_url").as("u_avatar_url")
             )
             .join("users")
             .on("users.id" == "messages.user_id")
@@ -52,7 +52,7 @@ func messageRouter() -> Router {
                 col("users.id").as("u_id"),
                 col("users.name").as("u_name"),
                 col("users.login").as("u_login"),
-                col("users.avater_url").as("u_avater_url")
+                col("users.avatar_url").as("u_avatar_url")
             )
             .join("users")
             .on("users.id" == "messages.user_id")

@@ -17,7 +17,7 @@ extension Message: Entity {
             let uid = row["u_id"] as? Int,
             let uname = row["u_name"] as? String,
             let ulogin = row["u_login"] as? String,
-            let uavaterURL = row["u_avater_url"] as? String
+            let uavaterURL = row["u_avatar_url"] as? String
         else {
             throw ValidationError.required("messages.*")
         }

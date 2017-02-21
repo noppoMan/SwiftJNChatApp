@@ -20,7 +20,11 @@ public struct Config {
         return "http://localhost:3030"
     }
     
-    public func buildAbsoluteURL(_ path: String) -> String {
+    public func buildAbsoluteURL(_ path: String) -> URL {
+        return URL(string: self.buildAbsoluteURLString(path))!
+    }
+    
+    public func buildAbsoluteURLString(_ path: String) -> String {
         return "\(baseURL)\(path)"
     }
     
