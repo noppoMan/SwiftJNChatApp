@@ -31,9 +31,9 @@ First, You need to create github Oauth Application and get `CLIENT_ID` AND `CLIE
 
 ```
 $ touch .env
-echo "GITHUB_CLIENT_ID=YOUR_CLIENT_ID" > .env
-echo "GITHUB_CLIENT_SECRET=YOUR_SECRET" > .env
-echo "JWT_SECRET=foobar" > .env
+echo "GITHUB_CLIENT_ID=YOUR_CLIENT_ID" >> .env
+echo "GITHUB_CLIENT_SECRET=YOUR_SECRET" >> .env
+echo "JWT_SECRET=foobar" >> .env
 ```
 
 ### 3. Schema Migration
@@ -50,7 +50,7 @@ Select SwiftJNChatApp executable Schema from Schema List
 
 and then, press `Command-R` to run application
 
-<img src="https://cloud.githubusercontent.com/assets/1511276/23135745/1d4b958a-f7dd-11e6-9992-205660038a79.png" width="300">
+<img src="https://cloud.githubusercontent.com/assets/1511276/23135745/1d4b958a-f7dd-11e6-9992-205660038a79.png" width="300">  
 Xcode says, Server Listening at localhost:3030. So Let's check it in Browser.
 
 ### 5. Open `http://localhost:3030` with Browser
