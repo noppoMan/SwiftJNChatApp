@@ -8,10 +8,6 @@
 
 import Foundation
 
-import Foundation
-
-//URL(string: "file://\(__dirname)/../../views/callback.html")!
-
 class Template {
     let compiled: String
     
