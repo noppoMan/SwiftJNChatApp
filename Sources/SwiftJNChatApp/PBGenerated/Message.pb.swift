@@ -10,25 +10,19 @@ import Foundation
 import SwiftProtobuf
 
 
-public struct Message: ProtobufGeneratedMessage {
+struct Message: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "Message"}
   public var protoMessageName: String {return "Message"}
   public var protoPackageName: String {return ""}
-  public var jsonFieldNames: [String: Int] {return [
-    "id": 1,
-    "user": 2,
-    "text": 3,
-    "createdAt": 4,
-  ]}
-  public var protoFieldNames: [String: Int] {return [
-    "id": 1,
-    "user": 2,
-    "text": 3,
-    "createdAt": 4,
-  ]}
+  public static let _protobuf_fieldNames: FieldNameMap = [
+    1: .same(proto: "id", swift: "id"),
+    2: .same(proto: "user", swift: "user"),
+    3: .same(proto: "text", swift: "text"),
+    4: .same(proto: "createdAt", swift: "createdAt"),
+  ]
 
   private class _StorageClass {
-    typealias ProtobufExtendedMessage = Message
+    typealias ExtendedMessage = Message
     var _id: Int32 = 0
     var _user: User? = nil
     var _text: String = ""
@@ -36,31 +30,28 @@ public struct Message: ProtobufGeneratedMessage {
 
     init() {}
 
-    func decodeField(setter: inout ProtobufFieldDecoder, protoFieldNumber: Int) throws -> Bool {
-      let handled: Bool
+    func decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
       switch protoFieldNumber {
-      case 1: handled = try setter.decodeSingularField(fieldType: ProtobufInt32.self, value: &_id)
-      case 2: handled = try setter.decodeSingularMessageField(fieldType: User.self, value: &_user)
-      case 3: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &_text)
-      case 4: handled = try setter.decodeSingularMessageField(fieldType: Google_Protobuf_Timestamp.self, value: &_createdAt)
-      default:
-        handled = false
+      case 1: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufInt32.self, value: &_id)
+      case 2: try setter.decodeSingularMessageField(fieldType: User.self, value: &_user)
+      case 3: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &_text)
+      case 4: try setter.decodeSingularMessageField(fieldType: Google_Protobuf_Timestamp.self, value: &_createdAt)
+      default: break
       }
-      return handled
     }
 
-    func traverse(visitor: inout ProtobufVisitor) throws {
+    func traverse(visitor: SwiftProtobuf.Visitor) throws {
       if _id != 0 {
-        try visitor.visitSingularField(fieldType: ProtobufInt32.self, value: _id, protoFieldNumber: 1, protoFieldName: "id", jsonFieldName: "id", swiftFieldName: "id")
+        try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufInt32.self, value: _id, fieldNumber: 1)
       }
       if let v = _user {
-        try visitor.visitSingularMessageField(value: v, protoFieldNumber: 2, protoFieldName: "user", jsonFieldName: "user", swiftFieldName: "user")
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
       if _text != "" {
-        try visitor.visitSingularField(fieldType: ProtobufString.self, value: _text, protoFieldNumber: 3, protoFieldName: "text", jsonFieldName: "text", swiftFieldName: "text")
+        try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: _text, fieldNumber: 3)
       }
       if let v = _createdAt {
-        try visitor.visitSingularMessageField(value: v, protoFieldNumber: 4, protoFieldName: "createdAt", jsonFieldName: "createdAt", swiftFieldName: "createdAt")
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
     }
 
@@ -84,50 +75,47 @@ public struct Message: ProtobufGeneratedMessage {
 
   private var _storage = _StorageClass()
 
-  public var id: Int32 {
+
+  var id: Int32 {
     get {return _storage._id}
     set {_uniqueStorage()._id = newValue}
   }
 
-  public var user: User {
+  var user: User {
     get {return _storage._user ?? User()}
     set {_uniqueStorage()._user = newValue}
   }
+  public var hasUser: Bool {
+    return _storage._user != nil
+  }
+  public mutating func clearUser() {
+    return _storage._user = nil
+  }
 
-  public var text: String {
+  var text: String {
     get {return _storage._text}
     set {_uniqueStorage()._text = newValue}
   }
 
-  public var createdAt: Google_Protobuf_Timestamp {
+  var createdAt: Google_Protobuf_Timestamp {
     get {return _storage._createdAt ?? Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._createdAt = newValue}
   }
-
-  public init() {}
-
-  public init(id: Int32? = nil,
-    user: User? = nil,
-    text: String? = nil,
-    createdAt: Google_Protobuf_Timestamp? = nil)
-  {
-    let storage = _uniqueStorage()
-    if let v = id {
-      storage._id = v
-    }
-    storage._user = user
-    if let v = text {
-      storage._text = v
-    }
-    storage._createdAt = createdAt
+  public var hasCreatedAt: Bool {
+    return _storage._createdAt != nil
+  }
+  public mutating func clearCreatedAt() {
+    return _storage._createdAt = nil
   }
 
-  public mutating func _protoc_generated_decodeField(setter: inout ProtobufFieldDecoder, protoFieldNumber: Int) throws -> Bool {
-    return try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
+  init() {}
+
+  public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
+    try _uniqueStorage().decodeField(setter: &setter, protoFieldNumber: protoFieldNumber)
   }
 
-  public func _protoc_generated_traverse(visitor: inout ProtobufVisitor) throws {
-    try _storage.traverse(visitor: &visitor)
+  public func _protoc_generated_traverse(visitor: SwiftProtobuf.Visitor) throws {
+    try _storage.traverse(visitor: visitor)
   }
 
   public func _protoc_generated_isEqualTo(other: Message) -> Bool {

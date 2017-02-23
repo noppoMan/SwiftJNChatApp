@@ -10,41 +10,29 @@ import Foundation
 import SwiftProtobuf
 
 
-public struct MessageCollection: ProtobufGeneratedMessage {
+struct MessageCollection: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "MessageCollection"}
   public var protoMessageName: String {return "MessageCollection"}
   public var protoPackageName: String {return ""}
-  public var jsonFieldNames: [String: Int] {return [
-    "items": 1,
-  ]}
-  public var protoFieldNames: [String: Int] {return [
-    "items": 1,
-  ]}
+  public static let _protobuf_fieldNames: FieldNameMap = [
+    1: .same(proto: "items", swift: "items"),
+  ]
 
-  public var items: [Message] = []
 
-  public init() {}
+  var items: [Message] = []
 
-  public init(items: [Message] = [])
-  {
-    if !items.isEmpty {
-      self.items = items
-    }
-  }
+  init() {}
 
-  public mutating func _protoc_generated_decodeField(setter: inout ProtobufFieldDecoder, protoFieldNumber: Int) throws -> Bool {
-    let handled: Bool
+  public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
-    case 1: handled = try setter.decodeRepeatedMessageField(fieldType: Message.self, value: &items)
-    default:
-      handled = false
+    case 1: try setter.decodeRepeatedMessageField(fieldType: Message.self, value: &items)
+    default: break
     }
-    return handled
   }
 
-  public func _protoc_generated_traverse(visitor: inout ProtobufVisitor) throws {
+  public func _protoc_generated_traverse(visitor: SwiftProtobuf.Visitor) throws {
     if !items.isEmpty {
-      try visitor.visitRepeatedMessageField(value: items, protoFieldNumber: 1, protoFieldName: "items", jsonFieldName: "items", swiftFieldName: "items")
+      try visitor.visitRepeatedMessageField(value: items, fieldNumber: 1)
     }
   }
 

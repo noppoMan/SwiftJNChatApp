@@ -15,4 +15,3 @@ let knexMigrations: [Migratable] = [
 ]
 
 try Migrator.run(config: Database.default.connectionInfo, arguments: CommandLine.arguments, knexMigrations: knexMigrations)
-

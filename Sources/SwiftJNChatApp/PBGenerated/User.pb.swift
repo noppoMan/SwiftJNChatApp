@@ -10,77 +10,50 @@ import Foundation
 import SwiftProtobuf
 
 
-public struct User: ProtobufGeneratedMessage {
+struct User: SwiftProtobuf.Message, SwiftProtobuf.Proto3Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf.ProtoNameProviding {
   public var swiftClassName: String {return "User"}
   public var protoMessageName: String {return "User"}
   public var protoPackageName: String {return ""}
-  public var jsonFieldNames: [String: Int] {return [
-    "id": 1,
-    "login": 2,
-    "name": 3,
-    "avaterURL": 4,
-  ]}
-  public var protoFieldNames: [String: Int] {return [
-    "id": 1,
-    "login": 2,
-    "name": 3,
-    "avaterURL": 4,
-  ]}
+  public static let _protobuf_fieldNames: FieldNameMap = [
+    1: .same(proto: "id", swift: "id"),
+    2: .same(proto: "login", swift: "login"),
+    3: .same(proto: "name", swift: "name"),
+    4: .same(proto: "avaterURL", swift: "avaterURL"),
+  ]
 
-  public var id: Int32 = 0
 
-  public var login: String = ""
+  var id: Int32 = 0
 
-  public var name: String = ""
+  var login: String = ""
 
-  public var avaterURL: String = ""
+  var name: String = ""
 
-  public init() {}
+  var avaterURL: String = ""
 
-  public init(id: Int32? = nil,
-    login: String? = nil,
-    name: String? = nil,
-    avaterURL: String? = nil)
-  {
-    if let v = id {
-      self.id = v
-    }
-    if let v = login {
-      self.login = v
-    }
-    if let v = name {
-      self.name = v
-    }
-    if let v = avaterURL {
-      self.avaterURL = v
-    }
-  }
+  init() {}
 
-  public mutating func _protoc_generated_decodeField(setter: inout ProtobufFieldDecoder, protoFieldNumber: Int) throws -> Bool {
-    let handled: Bool
+  public mutating func _protoc_generated_decodeField<T: SwiftProtobuf.FieldDecoder>(setter: inout T, protoFieldNumber: Int) throws {
     switch protoFieldNumber {
-    case 1: handled = try setter.decodeSingularField(fieldType: ProtobufInt32.self, value: &id)
-    case 2: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &login)
-    case 3: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &name)
-    case 4: handled = try setter.decodeSingularField(fieldType: ProtobufString.self, value: &avaterURL)
-    default:
-      handled = false
+    case 1: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufInt32.self, value: &id)
+    case 2: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &login)
+    case 3: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &name)
+    case 4: try setter.decodeSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: &avaterURL)
+    default: break
     }
-    return handled
   }
 
-  public func _protoc_generated_traverse(visitor: inout ProtobufVisitor) throws {
+  public func _protoc_generated_traverse(visitor: SwiftProtobuf.Visitor) throws {
     if id != 0 {
-      try visitor.visitSingularField(fieldType: ProtobufInt32.self, value: id, protoFieldNumber: 1, protoFieldName: "id", jsonFieldName: "id", swiftFieldName: "id")
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufInt32.self, value: id, fieldNumber: 1)
     }
     if login != "" {
-      try visitor.visitSingularField(fieldType: ProtobufString.self, value: login, protoFieldNumber: 2, protoFieldName: "login", jsonFieldName: "login", swiftFieldName: "login")
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: login, fieldNumber: 2)
     }
     if name != "" {
-      try visitor.visitSingularField(fieldType: ProtobufString.self, value: name, protoFieldNumber: 3, protoFieldName: "name", jsonFieldName: "name", swiftFieldName: "name")
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: name, fieldNumber: 3)
     }
     if avaterURL != "" {
-      try visitor.visitSingularField(fieldType: ProtobufString.self, value: avaterURL, protoFieldNumber: 4, protoFieldName: "avaterURL", jsonFieldName: "avaterURL", swiftFieldName: "avaterURL")
+      try visitor.visitSingularField(fieldType: SwiftProtobuf.ProtobufString.self, value: avaterURL, fieldNumber: 4)
     }
   }
 

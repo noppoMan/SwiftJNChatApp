@@ -22,11 +22,17 @@ extension Message: Entity {
             throw ValidationError.required("messages.*")
         }
         
-        let user = User(id: Int32(uid), login: ulogin, name: uname, avaterURL: uavaterURL)
-        
-        let ts = Google_Protobuf_Timestamp(secondsSinceEpoch: Int64(createdAt.timeIntervalSince1970))
-        
-        self.init(id: Int32(id), user: user, text: text, createdAt: ts)
+        var user = User()
+        user.id = Int32(uid)
+        user.login = ulogin
+        user.name = uname
+        user.avaterURL = uavaterURL
+    
+        self.init()
+        self.id = Int32(id)
+        self.user = user
+        self.text = text
+        self.createdAt = Google_Protobuf_Timestamp(seconds: Int64(createdAt.timeIntervalSince1970))
     }
 }
 

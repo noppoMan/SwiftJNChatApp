@@ -10,7 +10,7 @@ import Foundation
 import SwiftProtobuf
 
 extension Prorsum.Response {
-    public mutating func json<T: ProtobufGeneratedMessage>(proto pb: T) throws {
+    public mutating func json<T: SwiftProtobuf.Message>(proto pb: T) throws {
         try self.set(body:  pb.serializeJSON())
         self.set(headerKey: "Content-Type", value: "application/json")
     }

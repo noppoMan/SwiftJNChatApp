@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import APIKit
-
 
 extension URLSession {
     func dataTaskResumeSync<T: Entity>(with request: URLRequest) throws -> T {

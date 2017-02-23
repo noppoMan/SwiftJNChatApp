@@ -8,7 +8,6 @@
 
 import Foundation
 import WebAppKit
-import APIKit
 import JWT
 
 func githubOauthRequest(code: String) throws -> GithubToken {

@@ -9,8 +9,8 @@
 extension MessageCollection: SwiftKnex.CollectionType {
     
     public init(rows: ResultSet) throws {
-        let rows = try rows.map({ try Message(row: $0) })
-        self.init(items: rows)
+        self.init()
+        self.items = try rows.map({ try Message(row: $0) })
     }
     
 }

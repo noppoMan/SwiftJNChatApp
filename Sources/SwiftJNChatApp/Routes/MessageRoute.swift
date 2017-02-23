@@ -76,7 +76,9 @@ func messageRouter() -> Router {
             throw ValidationError.required("text")
         }
         
-        let message = Message(user: request.currentUser!, text: text)
+        var message = Message()
+        message.user = request.currentUser!
+        message.text = text
         let result = try knex().insert(into: "messages", values: message)
         
         var response = response

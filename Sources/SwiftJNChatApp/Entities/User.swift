@@ -21,21 +21,15 @@ extension User: Entity, Serializable {
             throw ValidationError.required("users.login")
         }
         
-        guard let name = row["name"] as? String else {
-            throw ValidationError.required("users.name")
-        }
-        
         guard let avaterURL = row["avatar_url"] as? String else {
             throw ValidationError.required("users.avatar_url")
         }
         
-        
-        self.init(
-            id: Int32(id),
-            login: login,
-            name: name,
-            avaterURL: avaterURL
-        )
+        self.init()
+        self.id = Int32(id)
+        self.login = login
+        self.name = row["name"] as? String ?? login
+        self.avaterURL = avaterURL
     }
     
     public func serialize() throws -> [String : Any] {
