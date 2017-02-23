@@ -20,8 +20,8 @@ ENV PATH $PWD/$SWIFTFILE/usr/bin:"${PATH}"
 
 RUN swift --version
 
-RUN git clone https://github.com/noppoMan/SwiftJNChatApp.git
+COPY . /var/www/app
 
-RUN cd SwiftJNChatApp && swift build
+RUN cd /var/www/app && swift build
 
-CMD ./.build/debug/SwiftJNChatApp
+CMD /var/www/app/.build/debug/SwiftJNChatApp

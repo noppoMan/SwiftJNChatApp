@@ -20,6 +20,14 @@ public struct Config {
         return "http://localhost:3030"
     }
     
+    public var port: UInt {
+        guard let PORT = ProcessInfo.processInfo.environment["PORT"] else {
+            return 3030
+        }
+        
+        return UInt(PORT)!
+    }
+    
     public func buildAbsoluteURL(_ path: String) -> URL {
         return URL(string: self.buildAbsoluteURLString(path))!
     }

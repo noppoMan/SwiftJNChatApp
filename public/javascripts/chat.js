@@ -113,4 +113,10 @@
     longPolling(lastItem ? lastItem.id : null);
   });
 
+  $("#logout").click(function(ev){
+    ev.preventDefault();
+    localStorage.removeItem("jwt");
+    location.href="/";
+  });
+
 }.call(this));

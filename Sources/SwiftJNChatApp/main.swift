@@ -49,8 +49,8 @@ app.catch { error in
 }
 
 let server = try HTTPServer(app.handler)
-try server.bind(host: "localhost", port: 3030)
+try server.bind(host: "localhost", port: Config.default.port)
 try server.listen()
-print("Server listening at localhost:3030")
+print("Server listening at localhost:\(Config.default.port)")
 
 RunLoop.main.run()

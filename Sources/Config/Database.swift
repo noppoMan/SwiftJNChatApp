@@ -6,6 +6,7 @@
 //
 //
 
+import Foundation
 import SwiftKnex
 
 public struct Database {
@@ -19,6 +20,14 @@ public struct Database {
                 host: "localhost",
                 user: "root",
                 database: "swiftjn_chat_service_development"
+            )
+        case .production:
+            let env = ProcessInfo.processInfo.environment
+            return KnexConfig(
+                host: env["MYSQL_HOST"]!,
+                user: env["MYSQL_USER"]!,
+                password: env["MYSQL_PASSWORD"]!,
+                database: env["MYSQL_DATABASE"]!
             )
         default:
             return KnexConfig(
