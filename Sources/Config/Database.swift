@@ -14,15 +14,17 @@ public struct Database {
     public static let `default` = Database()
     
     public var connectionInfo: KnexConfig {
+        let env = ProcessInfo.processInfo.environment
         switch Config.default.env {
         case .development:
             return KnexConfig(
-                host: "localhost",
-                user: "root",
-                database: "swiftjn_chat_service_development"
+                host: env["MYSQL_HOST"] ?? "localhost",
+                user: env["MYSQL_USER"] ?? "root",
+                password: env["MYSQL_PASSWORD"],
+                database: "swiftjn_chat_service_development",
+                isShowSQLLog: true
             )
         case .production:
-            let env = ProcessInfo.processInfo.environment
             return KnexConfig(
                 host: env["MYSQL_HOST"]!,
                 user: env["MYSQL_USER"]!,
